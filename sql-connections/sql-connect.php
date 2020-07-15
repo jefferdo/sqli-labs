@@ -1,17 +1,17 @@
 <?php
 
-//including the Mysql connect parameters.
+//including the mysql connect parameters.
 include("../sql-connections/db-creds.inc");
 @error_reporting(0);
-@$con = mysql_connect($host,$dbuser,$dbpass);
+@$con = ($GLOBALS["___mysqli_ston"] = mysqli_connect($host, $dbuser, $dbpass));
 // Check connection
 if (!$con)
 {
-    echo "Failed to connect to MySQL: " . mysql_error();
+    echo "Failed to connect to mysql: " . mysqli_error($GLOBALS["___mysqli_ston"]);
 }
 
 
-    @mysql_select_db($dbname,$con) or die ( "Unable to connect to the database: $dbname");
+    @mysqli_select_db($con, $dbname) or die ( "Unable to connect to the database: $dbname");
 
 
 

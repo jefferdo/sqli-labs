@@ -36,7 +36,7 @@
 
 
 <?php
-//including the Mysql connect parameters.
+//including the mysql connect parameters.
 include("../sql-connections/sql-connect.php");
 error_reporting(0);
 
@@ -57,8 +57,8 @@ if(isset($_POST['uname']) && isset($_POST['passwd']))
 	$uname='"'.$uname.'"';
 	$passwd='"'.$passwd.'"'; 
 	@$sql="SELECT username, password FROM users WHERE username=($uname) and password=($passwd) LIMIT 0,1";
-	$result=mysql_query($sql);
-	$row = mysql_fetch_array($result);
+	$result=mysqli_query($GLOBALS["___mysqli_ston"], $sql);
+	$row = mysqli_fetch_array($result);
 
 	if($row)
 	{

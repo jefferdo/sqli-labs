@@ -9,7 +9,7 @@
 <?PHP
 
 session_start();
-//including the Mysql connect parameters.
+//including the mysql connect parameters.
 include("../sql-connections/db-creds.inc");
 
 
@@ -28,7 +28,7 @@ $con1 = mysqli_connect($host,$dbuser,$dbpass, $dbname);
    // Check connection
    if (mysqli_connect_errno($con1))
    {
-       echo "Failed to connect to MySQL: " . mysqli_connect_error();
+       echo "Failed to connect to mysql: " . mysqli_connect_error();
    }
    else
    {

@@ -18,7 +18,7 @@
 
 
 <?php
-//including the Mysql connect parameters.
+//including the mysql connect parameters.
 include '../sql-connections/sql-connect-1.php';
 include '../sql-connections/functions.php';
 error_reporting(0);
@@ -95,8 +95,8 @@ if(!isset($_POST['answer_key']))
 		
 			// Querry DB to get the correct output
 			$sql="SELECT * FROM security.users WHERE id='$id' LIMIT 0,1";
-			$result=mysql_query($sql);
-			$row = mysql_fetch_array($result);
+			$result=mysqli_query($GLOBALS["___mysqli_ston"], $sql);
+			$row = mysqli_fetch_array($result);
 
 			if($row)
 			{
@@ -144,14 +144,14 @@ else
 {
 	echo '<div  style=" color:#00FFFF; font-size:18px; text-align:center">';
 	$key = addslashes($_POST['key']);
-	$key = mysql_real_escape_string($key);
+	$key = mysqli_real_escape_string($GLOBALS["___mysqli_ston"], $key);
 	//echo $key;
 	//Query table to verify your result
 	$sql="SELECT 1 FROM $table WHERE $col1= '$key'";
 	//echo "$sql";
-	$result=mysql_query($sql)or die("error in submittion of Key Solution".mysql_error());
+	$result=mysqli_query($GLOBALS["___mysqli_ston"], $sql)or die("error in submittion of Key Solution".mysqli_error($GLOBALS["___mysqli_ston"]));
 	 
-	$row = mysql_fetch_array($result);
+	$row = mysqli_fetch_array($result);
 	
 	if($row)
 	{
